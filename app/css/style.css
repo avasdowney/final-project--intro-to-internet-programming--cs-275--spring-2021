@@ -27,7 +27,7 @@ h6 {
 /* diamond settings */
 div {
   border: 2px solid rgb(155, 20, 155);
-  position: relative;
+  position: absolute;
   font-family: monospace;
   text-align: center;
 }
