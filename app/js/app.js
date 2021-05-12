@@ -12,7 +12,7 @@ window.onload = () => {
 	        for(let col=1; col<=2*row-1; col++) {
 	            diamond += `*`;
 	        }
-	        diamond += '<br>';
+	        diamond += `<br>`;
 	    } 
         // top half
 	    for(let row=diameter; row>=1; row--) {
@@ -25,24 +25,24 @@ window.onload = () => {
 		div.innerHTML = diamond;
     }; 
 	
-	let xPos = 0;
-	let speed = 10;
-	let direction = 1;
+	let xPos = 0; // start position
+	let speed = 10; // ticks
+	let direction = 1; // move right initially
 
 	let moveDiamond = () => {
 		let diamondWidth = div.clientWidth;
 		let viewport = window.innerWidth;
 		xPos += (direction*speed);
 
-		if(direction == 1 && (xPos+diamondWidth >= viewport))
-			direction *= -1;
-		else if (direction == -1 && xPos<=0)
-			direction *= -1;
+		if(direction === 1 && (xPos+diamondWidth >= viewport)) // move left to edge
+			direction = -1;
+		else if (direction === -1 && xPos<=0) // move right to edge
+			direction = 1;
 
 		document.querySelector(`div`).style.left = xPos + `px`;
 	}
 	
 	createDiamond(diamondDiameter);
-	setInterval(moveDiamond,100);
+	setInterval(moveDiamond,60);
 
 };
