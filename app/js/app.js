@@ -24,5 +24,25 @@ window.onload = () => {
 		// print full diamond
 		div.innerHTML = diamond;
     }; 
+	
+	let xPos = 0;
+	let speed = 10;
+	let direction = 1;
+
+	let moveDiamond = () => {
+		let diamondWidth = div.clientWidth;
+		let viewport = window.innerWidth;
+		xPos += (direction*speed);
+
+		if(direction == 1 && (xPos+diamondWidth >= viewport))
+			direction *= -1;
+		else if (direction == -1 && xPos<=0)
+			direction *= -1;
+
+		document.querySelector(`div`).style.left = xPos + `px`;
+	}
+	
 	createDiamond(diamondDiameter);
+	setInterval(moveDiamond,100);
+
 };
