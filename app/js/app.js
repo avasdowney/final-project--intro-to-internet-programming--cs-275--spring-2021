@@ -30,15 +30,15 @@ window.onload = () => {
     let createEvenDiamond = (diameter) => {
         // top half
         diamond += `*`;
-        for(let row=1; row<=diameter; row++) {
-            for(let col=1; col<=2*(row-1); col++) {
+        for(let row=1; row<=diameter+1; row+=2) {
+            for(let col=1; col<row; col++) {
                 diamond += `*`;
             } 
             diamond += `<br>`;
         } 
         // bottom half
-        for(let row=diameter; row>1; row--) {
-            for(let col=2; col<2*(row-1); col++) {
+        for(let row=diameter-1; row>1; row-=2) {
+            for(let col=1; col<row; col++) {
                 diamond += `*`;
             }
             diamond += `<br>`;
@@ -74,6 +74,6 @@ window.onload = () => {
     };
 	
     chooseDiamond();
-    // setInterval(moveDiamond,60);
+    setInterval(moveDiamond,60);
 
 };
